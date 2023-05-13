@@ -1,6 +1,11 @@
-name: calculator CI
+name: Deploy to Google Cloud
 
-on: [pull_request]
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch or tag name
+        required: true
 
 jobs:
   build:
