@@ -1,10 +1,8 @@
 version: '3.8'
 services:
   mongodb:
+    container_name: mongodb
     image: mongo:latest
-    env_file:
-      - .env
-
     ports:
       - 27017:27017
     volumes:
@@ -14,12 +12,12 @@ services:
     build: .
     volumes:
       - .:/app
+      - /app/node_modules
       - ./logs:/app/logs
     ports:
-      - ${APP_PORT}:${APP_PORT}
+      - 3000:3000
     command: npm run start:dev
-    env_file:
-      - .env
+    container_name: api
     depends_on:
       - mongodb
 
