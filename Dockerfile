@@ -12,6 +12,10 @@ RUN mkdir logs
 
 # Install app dependencies
 RUN npm install --only=production
+
+# Install Nest CLI globally
+RUN npm install -g @nestjs/cli
+
 # Bundle app source
 COPY . .
 
