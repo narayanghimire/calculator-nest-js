@@ -10,7 +10,7 @@ env:
   PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   REGION: europe-west3
   # project-name but it can be anything you want
-  REPO_NAME: calculator-nestjs-apps
+  REPO_NAME: calculator-nest-js
 
 jobs:
   build-and-deploy:
