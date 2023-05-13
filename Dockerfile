@@ -19,6 +19,8 @@ RUN npm install -g @nestjs/cli
 # Bundle app source
 COPY . .
 
+# Expose port 80
+EXPOSE 80
 # Creates a "dist" folder with the production build
 RUN npm run build
 
