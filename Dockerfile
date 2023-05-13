@@ -6,11 +6,12 @@ WORKDIR /app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
-# Create the logs directory
-RUN mkdir logs \
-# Install app dependencies
-npm install --only=production
 
+# Create the logs directory
+RUN mkdir logs
+
+# Install app dependencies
+RUN npm install --only=production
 # Bundle app source
 COPY . .
 
