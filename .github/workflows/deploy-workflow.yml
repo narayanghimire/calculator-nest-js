@@ -7,7 +7,7 @@ on:
         description: Branch or tag name
         required: true
 env:
-  PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
+  PROJECT_ID: calculator-nestjs-4781
   REGION: europe-west3
   # project-name but it can be anything you want
   REPO_NAME: calculator-nest-js
