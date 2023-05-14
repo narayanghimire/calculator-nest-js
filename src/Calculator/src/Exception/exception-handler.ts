@@ -1,55 +1,41 @@
-import { logger } from '../Config/logger';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { ILogger } from '../Logger/logger.interface';
 import { CalculationException } from './calculation.exception';
-import { ArgumentsHost, BadRequestException, NotFoundException } from "@nestjs/common";
 import { ClientIdentifierException } from './client.identifier.exception';
+import { DefaultExceptionResponse } from '../Http/Responses/defualt-exception.response';
+import { NotFoundExceptionResponse } from '../Http/Responses/not-found-exception.response';
 import { CalculationExceptionResponse } from '../Http/Responses/calculation.exception.response';
 import { ClientIdentifierExceptionResponse } from '../Http/Responses/client-identifier-exception.response';
 import { BadRequestExceptionResponse } from '../Http/Responses/bad-request.exception.response';
-import { NotFoundExceptionResponse } from '../Http/Responses/not-found-exception.response';
-import { DefaultExceptionResponse } from '../Http/Responses/defualt-exception.response';
+import { ExceptionResponse } from '../Interface/exception.response';
+import { LOGGER_TOKEN } from '../Constants/constants';
 
-export function exceptionHandler(error: Error, host: ArgumentsHost) {
-  logger.error(error);
-  const ctx = host.switchToHttp();
-  const response = ctx.getResponse();
+@Injectable()
+export class ExceptionHandler {
+  constructor(@Inject(LOGGER_TOKEN) private readonly logger: ILogger) {}
+  handleException(exception: Error): ExceptionResponse {
+    this.logger.error(exception.message);
+    if (exception instanceof CalculationException) {
+      return new CalculationExceptionResponse(exception.message);
+    }
 
-  if (error instanceof CalculationException) {
-    const calculationExceptionResponse = new CalculationExceptionResponse(
-      error.message,
-    );
+    if (exception instanceof ClientIdentifierException) {
+      return new ClientIdentifierExceptionResponse(exception.message);
+    }
 
-    return response
-      .status(calculationExceptionResponse.statusCode)
-      .json(calculationExceptionResponse);
+    if (exception instanceof NotFoundException) {
+      return new NotFoundExceptionResponse();
+    }
+
+    if (exception instanceof BadRequestException) {
+      return new BadRequestExceptionResponse();
+    }
+
+    return new DefaultExceptionResponse();
   }
-
-  if (error instanceof ClientIdentifierException) {
-    const clientIdentifierExceptionResponse =
-      new ClientIdentifierExceptionResponse(error.message);
-
-    return response
-      .status(clientIdentifierExceptionResponse.statusCode)
-      .json(clientIdentifierExceptionResponse);
-  }
-
-  if (error instanceof NotFoundException) {
-    const notFoundExceptionResponse = new NotFoundExceptionResponse();
-
-    return response
-      .status(notFoundExceptionResponse.statusCode)
-      .json(notFoundExceptionResponse);
-  }
-
-  if (error instanceof BadRequestException) {
-    const badRequestExceptionResponse = new BadRequestExceptionResponse();
-    return response
-      .status(badRequestExceptionResponse.statusCode)
-      .json(badRequestExceptionResponse);
-  }
-
-  const defaultExceptionResponse = new DefaultExceptionResponse();
-
-  return response
-    .status(defaultExceptionResponse.statusCode)
-    .json(defaultExceptionResponse);
 }

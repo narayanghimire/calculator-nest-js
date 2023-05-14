@@ -3,13 +3,15 @@ import { CalculatorService } from '../../../src/Services/calculator.service';
 import { CalculationException } from '../../../src/Exception/calculation.exception';
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
-  CALCULATION_REPOSITORY_TOKEN,
+  CALCULATION_REPOSITORY_TOKEN, LOGGER_TOKEN,
 } from '../../../src/Constants/constants';
+
 
 describe('CalculatorService', () => {
   let service: CalculatorService;
   let mockCalculationRepo;
   let mockPersistenceRepo;
+  let mockLogger;
 
   beforeEach(async () => {
     mockCalculationRepo = { calculate: jest.fn() };
@@ -17,6 +19,7 @@ describe('CalculatorService', () => {
       saveCalculation: jest.fn(),
       getLastFiveCalculationsHistory: jest.fn(),
     };
+    mockLogger = { error: jest.fn() };
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         CalculatorService,
@@ -27,6 +30,10 @@ describe('CalculatorService', () => {
         {
           provide: CALCULATION_REPOSITORY_PERSIST_TOKEN,
           useValue: mockPersistenceRepo,
+        },
+        {
+          provide: LOGGER_TOKEN,
+          useValue: mockLogger,
         },
       ],
     }).compile();
@@ -45,12 +52,14 @@ describe('CalculatorService', () => {
 
     it('should throw a CalculationException if calculation fails', async () => {
       const query = '2+2';
+      const error = new Error('testing error');
       mockCalculationRepo.calculate.mockImplementation(() => {
-        throw new Error();
+        throw error;
       });
       await expect(service.calculate(query)).rejects.toThrow(
         CalculationException,
       );
+      expect(mockLogger.error).toHaveBeenCalledWith(error);
     });
   });
 
@@ -66,12 +75,14 @@ describe('CalculatorService', () => {
     it('should throw a CalculationException if persist fails', async () => {
       const query = '2+2';
       const result = 4;
+      const error = new Error('testing error');
       mockPersistenceRepo.saveCalculation.mockImplementation(() => {
-        throw new Error();
+        throw error;
       });
       await expect(service.persistCalculation(query, result)).rejects.toThrow(
         CalculationException,
       );
+      expect(mockLogger.error).toHaveBeenCalledWith(error);
     });
   });
 
@@ -86,14 +97,16 @@ describe('CalculatorService', () => {
     });
 
     it('should throw a CalculationException if history  fails', async () => {
+      const error = new Error();
       mockPersistenceRepo.getLastFiveCalculationsHistory.mockImplementation(
         () => {
-          throw new Error();
+          throw error;
         },
       );
       await expect(service.getQueryCalculationHistory()).rejects.toThrow(
         CalculationException,
       );
+      expect(mockLogger.error).toHaveBeenCalledWith(error);
     });
   });
 });

@@ -1,5 +1,6 @@
 import { createLogger, format } from 'winston';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
+import { ILogger } from './logger.interface';
 
 // Create a daily rotate file transport
 const fileTransport = new DailyRotateFile({
@@ -10,7 +11,7 @@ const fileTransport = new DailyRotateFile({
 });
 
 // Create a logger instance
-export const logger = createLogger({
+const logger: ILogger = createLogger({
   level: 'error',
   format: format.combine(
     format.timestamp(),
@@ -19,3 +20,5 @@ export const logger = createLogger({
   ),
   transports: [fileTransport],
 });
+
+export default logger;

@@ -1,8 +1,9 @@
 import { NestFactory } from '@nestjs/core';
-import { exceptionHandler } from './Exception/exception-handler';
+import { ExceptionHandler } from './Exception/exception-handler';
 import { ArgumentsHost } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -10,12 +11,15 @@ async function bootstrap() {
     catch(exception: Error, host: ArgumentsHost) {
       const ctx = host.switchToHttp();
       const response = ctx.getResponse();
-      const exceptionResponse = exceptionHandler(exception, host);
-      if (!response.headersSent) {
-        response
-          .status(exceptionResponse.statusCode)
-          .json({ error: true, message: 'something went wrong' });
-      }
+      // Create an instance of the ExceptionHandler class
+      const exceptionHandler = app
+        .get(ExceptionHandler)
+        .handleException(exception);
+
+      response.status(exceptionHandler.statusCode).json({
+        error: exceptionHandler.error,
+        message: exceptionHandler.message,
+      });
     },
   });
   app.useGlobalPipes(new ValidationPipe());
