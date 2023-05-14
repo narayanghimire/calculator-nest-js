@@ -1,8 +1,9 @@
-## This workflow is not required on this project but I want to show how actually I work when I am working
-
 name: PullRequest-QA-Workflow
 
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - '*'
 
 env:
   BRANCH_NAME: ${{ github.head_ref }}
@@ -10,23 +11,38 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker/compose:1.29.2
+        options: --privileged
+        env:
+          DOCKER_COMPOSE_VERSION: 1.29.2
+
     steps:
       - name: 'Basic info'
         run: |
           echo "Executing pull request workflow for branch $BRANCH_NAME, on: ${{ github.repository }}"
+
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      - name: Build and run Docker containers
+        run: |
+          docker-compose up --build -d
 
-      - name: Install dependencies
-        run:  npm  install
+      - name: Set up Node.js and Install dependencies
+        run: |
+          docker-compose exec api sh -c 'npm install'
 
-      - name: create dist folder
-        run: npm  build
+      - name: Create dist folder
+        run: |
+          docker-compose exec api sh -c 'npm run build'
 
       - name: Run Unit Test
-        run: npm run test
+        run: |
+          docker-compose exec api sh -c 'npm run test'
+
+      - name: Stop Docker containers
+        run: |
+          docker-compose down
