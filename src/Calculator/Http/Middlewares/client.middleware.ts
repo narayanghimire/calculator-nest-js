@@ -8,11 +8,11 @@ export class ClientMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     const xClient = req.headers['x-client'];
     if (!xClient) {
-      ClientIdentifierException.noHeaderFound();
+      throw ClientIdentifierException.noHeaderFound();
     }
 
     if (xClient !== VALID_CLIENT) {
-      ClientIdentifierException.invalidHeader();
+      throw ClientIdentifierException.invalidHeader();
     }
 
     next();

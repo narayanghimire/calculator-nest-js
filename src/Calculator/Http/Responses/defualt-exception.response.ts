@@ -2,7 +2,7 @@ import { HttpStatus } from '@nestjs/common';
 import { ExceptionResponse } from '../../Interface/exception.response';
 
 export class DefaultExceptionResponse implements ExceptionResponse {
-  error = false;
+  error = true;
   constructor(
     public readonly message: string = 'Whoops, something went wrong',
   ) {}

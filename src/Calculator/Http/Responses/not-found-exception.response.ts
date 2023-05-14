@@ -2,7 +2,7 @@ import { ExceptionResponse } from '../../Interface/exception.response';
 import { HttpStatus } from '@nestjs/common';
 
 export class NotFoundExceptionResponse implements ExceptionResponse {
-  error = false;
+  error = true;
   constructor(public readonly message: string = 'not found') {}
 
   get statusCode(): number {

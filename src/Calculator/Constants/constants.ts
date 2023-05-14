@@ -1,4 +1,4 @@
-export const VALID_CLIENT = 'validClient';
+export const VALID_CLIENT = 'bike24';
 export const CALCULATION_REPOSITORY_TOKEN = Symbol(
   'CALCULATION_REPOSITORY_TOKEN',
 );

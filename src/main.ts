@@ -14,7 +14,7 @@ async function bootstrap() {
       if (!response.headersSent) {
         response
           .status(exceptionResponse.statusCode)
-          .json({ message: 'hello2' });
+          .json({ error: true, message: 'something went wrong' });
       }
     },
   });
