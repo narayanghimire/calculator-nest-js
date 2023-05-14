@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: owasp/zap2docker-stable
+      image: alpine:latest
       options: --user root
     steps:
       - name: Checkout code
