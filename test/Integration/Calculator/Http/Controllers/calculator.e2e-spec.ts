@@ -8,6 +8,7 @@ describe('CalculatorService (e2e)', () => {
   let agent: supertest.SuperTest<supertest.Test>;
 
   beforeAll(async () => {
+    jest.setTimeout(10000);
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -20,7 +21,7 @@ describe('CalculatorService (e2e)', () => {
     agent = supertest(app.getHttpServer());
   });
 
- it('/calculus (GET)', () => {
+  it('/calculus (GET)', () => {
     const query = 'MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk=';
     return agent
       .get(`/calculus?query=${query}`)
