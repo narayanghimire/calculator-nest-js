@@ -25,7 +25,7 @@ jobs:
           echo "Executing pull request workflow for branch $BRANCH_NAME, on: ${{ github.repository }}"
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build and run Docker containers
         run: |
