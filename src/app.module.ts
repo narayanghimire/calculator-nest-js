@@ -11,7 +11,7 @@ import { ClientMiddleware } from './Calculator/Http/Middlewares/client.middlewar
 @Module({
   imports: [
     CalculatorModule,
-    MongooseModule.forRoot(`mongodb://mongodb:27017/calculator`),
+    MongooseModule.forRoot(`mongodb+srv://narayanghimire123:meronepal123@cluster0.llnpodo.mongodb.net/?retryWrites=true&w=majority`),
   ],
 })
 export class AppModule implements NestModule {
