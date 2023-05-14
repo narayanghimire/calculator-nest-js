@@ -10,6 +10,10 @@ RUN npm install
 # Install Nest CLI globally
 RUN npm install -g @nestjs/cli
 
+# Create the logs directory
+RUN mkdir logs
+
+
 # Bundle app source
 COPY . .
 
@@ -25,6 +29,9 @@ COPY package*.json ./
 
 # Install app dependencies
 RUN npm install --only=production
+
+# Create the logs directory
+RUN mkdir logs
 
 # Copy from development stage
 COPY --from=development /app/dist ./dist
