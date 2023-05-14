@@ -16,7 +16,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-      - ./logs:/app/logs
+      - ./logs:/app/logs:rw
     ports:
       - 8000:8000
     command: npm run start:dev
