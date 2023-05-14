@@ -14,6 +14,10 @@ RUN mkdir -p logs && chmod 777 logs
 
 COPY --chown=node:node . .
 
+RUN chown -R node:node /app
+
+USER node
+
 RUN npm run build
 
 # Base image for production
@@ -28,6 +32,6 @@ RUN npm install --only=production
 # Create the logs directory with write permissions
 RUN mkdir -p logs && chmod 777 logs
 
-COPY --from=development /app/dist ./dist
+COPY --from=development --chown=node:node /app/dist ./dist
 
 CMD ["node", "dist/main.js"]
