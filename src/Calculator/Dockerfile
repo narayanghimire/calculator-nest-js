@@ -11,7 +11,7 @@ RUN npm install
 RUN npm install -g @nestjs/cli
 
 # Bundle app source
-COPY ../.. .
+COPY . .
 
 # Creates a "dist" folder with the development build
 RUN npm run build
