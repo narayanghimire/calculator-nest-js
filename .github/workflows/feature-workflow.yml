@@ -32,8 +32,7 @@ jobs:
           docker-compose up --build -d
 
       - name: Install dependencies with Docker Compose
-        run: docker-compose exec -T api npm install
-
+        run: docker-compose exec api npm install
 
       - name: Create dist folder
         run: |
