@@ -43,9 +43,10 @@ jobs:
 
       - name: Deploy
         run: |-
-          gcloud run deploy $REPO_NAME \
-          --region $REGION \
-          --image gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
-          --platform "managed" \
-          --quiet \
-          -- port 8080
+            gcloud run deploy $REPO_NAME \
+            --region $REGION \
+            --image gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
+            --platform "managed" \
+            --quiet \
+            --port 8080
+        
