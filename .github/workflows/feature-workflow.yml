@@ -31,9 +31,9 @@ jobs:
         run: |
           docker-compose up --build -d
 
-      - name: Set up Node.js and Install dependencies
-        run: |
-          docker-compose exec api sh -c 'npm install'
+      - name: Install dependencies with Docker Compose
+        run: docker-compose exec -T api npm install
+
 
       - name: Create dist folder
         run: |
