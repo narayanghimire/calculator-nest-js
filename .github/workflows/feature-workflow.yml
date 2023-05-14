@@ -4,10 +4,16 @@ name: PullRequest-QA-Workflow
 
 on: [pull_request]
 
+env:
+  BRANCH_NAME: ${{ github.head_ref }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: 'Basic info'
+        run: |
+          echo "Executing pull request workflow for branch $BRANCH_NAME, on: ${{ github.repository }}"
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -24,15 +30,6 @@ jobs:
 
       - name: Run Unit Test
         run: npm run test
-
-      - name: 'Publish Unit Test Results'
-        uses: EnricoMi/publish-unit-test-result-action@v1.31
-        if: always()
-        with:
-          files: reports/report_integration.xml
-          check_name: "Unit Test Results"
-        continue-on-error: false
-
 
 
 
