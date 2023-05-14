@@ -27,7 +27,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run:  npm run install --only=production
+        run:  npm install --only=production
 
 
 
