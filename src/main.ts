@@ -20,7 +20,7 @@ async function bootstrap() {
   });
   app.useGlobalPipes(new ValidationPipe());
 
-  const port = process.env.PORT || 8080;
+  const port = 3000;
   await app.listen(port);
 }
 bootstrap();
