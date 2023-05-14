@@ -33,14 +33,9 @@ jobs:
       - name: Authorize Docker push
         run: gcloud auth configure-docker
 
-      - name: Build and tag the docker images
-        run: |
-          docker-compose build
-          MONGODB_IMAGE_ID=$(docker inspect -f '{{.Image}}' mongodb)
-          API_IMAGE_ID=$(docker inspect -f '{{.Image}}' api)
-          docker tag $MONGODB_IMAGE_ID gcr.io/$PROJECT_ID/mongodb:$GITHUB_SHA
-          docker tag $API_IMAGE_ID gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
-
+      - name: Build and tag the docker image
+        run: |-
+          docker build . --tag gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |-
