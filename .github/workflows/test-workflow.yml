@@ -12,14 +12,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image
-        run: docker build -t myapp .
+      - name: Build and run Docker containers
+        run: |
+          docker-compose up --build -d
 
-      - name: Install dependencies with Docker
-        run: docker run -v $PWD:/app -w /app myapp npm install
+      - name: Install dependencies with Docker Compose
+        run: docker-compose exec api sh -c "npm install"
 
-      - name: create dist folder
-        run: docker run -v $PWD:/app -w /app myapp npm build
+      - name: Create dist folder
+        run: |
+          docker-compose run api npm run build
 
-      - name: Run Integration Test with Docker
-        run: docker run -v $PWD:/app -w /app myapp npm run test:e2e
+      - name: Run Integration Test
+        run: |
+          docker-compose run api npm run test:e2e
+
+      - name: Stop Docker containers
+        run: |
+          docker-compose down
+
