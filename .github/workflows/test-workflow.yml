@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: owasp/zap2docker-stable
+      options: --user root
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
