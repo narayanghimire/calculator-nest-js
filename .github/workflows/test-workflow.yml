@@ -1,19 +1,16 @@
 ## This workflow is not required on this project but I want to show how actually I work when I am working
 
-name: PullRequest-QA-Workflow
+name: Test-Deploy-Main-Workflow
 
-on: [pull_request]
-
-env:
-  BRANCH_NAME: ${{ github.head_ref }}
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Basic info'
-        run: |
-          echo "Executing pull request workflow for branch $BRANCH_NAME, on: ${{ github.repository }}"
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -23,13 +20,10 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run:  npm  install
+        run:  npm run install
 
       - name: create dist folder
-        run: npm  build
+        run: npm run build
 
-      - name: Run Unit Test
-        run: npm run test
-
-
-
+      - name: Run Integration Test
+        run: npm run test:e2e

@@ -1,0 +1,33 @@
+## This workflow is not required on this project but I want to show how actually I work when I am working
+
+name: Stage-Deploy-Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      deploy_branch:
+        description: 'Branch or tag'
+        required: false
+        type: string
+        default: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run:  npm run install --only=production
+
+
+

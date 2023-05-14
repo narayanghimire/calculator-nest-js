@@ -8,6 +8,4 @@ export class BadRequestExceptionResponse implements ExceptionResponse {
   get statusCode(): number {
     return HttpStatus.BAD_REQUEST;
   }
-
-
 }
