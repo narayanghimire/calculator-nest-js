@@ -26,6 +26,7 @@ export class CalculationPersistenceRepository
       .exec();
 
     return calculationHistory.map((calculation) =>
+      // Not sure but what happens if we keep calculation only instead of calculation.toObject() ?
       plainToInstance(CalculationHistoryDto, calculation.toObject()),
     );
   }

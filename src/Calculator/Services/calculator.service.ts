@@ -21,7 +21,8 @@ export class CalculatorService {
   async calculate(query: string): Promise<CalculationResult> {
     try {
       const result = this.calculationRepository.calculate(query);
-      return new CalculationResult(false, result);
+      // explained in class.
+      return new CalculationResult(result);
     } catch (error) {
       logger.error(error);
       CalculationException.throwCalculationException();

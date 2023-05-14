@@ -1,6 +1,9 @@
 import { createLogger, format } from 'winston';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
 
+// Logger file would be used by other modules as well so I prefer this to be moved in
+// src/config/
+
 // Create a daily rotate file transport
 const fileTransport = new DailyRotateFile({
   filename: 'logs/error-%DATE%.log',

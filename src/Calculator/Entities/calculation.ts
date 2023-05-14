@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+// this file could be renamed as calculation.schema.ts
 
 @Schema({ timestamps: true })
 export class Calculation extends Document {
