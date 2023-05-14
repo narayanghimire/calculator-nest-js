@@ -22,6 +22,7 @@ COPY . .
 # Creates a "dist" folder with the production build
 RUN npm run build
 
-EXPOSE 8080
+ENV PORT 8080
+ENV HOST 0.0.0.0
 # Start the application
 CMD ["node", "dist/main.js"]
