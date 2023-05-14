@@ -17,10 +17,10 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run:  npm run install
+        run:  npm  install
 
       - name: create dist folder
-        run: npm run build
+        run: npm  build
 
       - name: Run Unit Test
         run: npm run test
