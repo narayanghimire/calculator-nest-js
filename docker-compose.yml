@@ -1,13 +1,28 @@
 version: '3.8'
 services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: ./src/Calculator/Dockerfile
+      target: development
     volumes:
       - .:/app
       - /app/node_modules
       - ./logs:/app/logs
     ports:
-      - 8080:8080
+      - 8000:8000
     command: npm run start:dev
     container_name: api
+    depends_on:
+      - mongodb
 
+volumes:
+  mongodb_data_container:

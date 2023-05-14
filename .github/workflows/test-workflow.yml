@@ -1,5 +1,3 @@
-## This workflow is not required on this project but I want to show how actually I work when I am working
-
 name: Test-Deploy-Main-Workflow
 
 on:
@@ -14,16 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run:  npm install
-
-      - name: create dist folder
-        run: npm build
+      - name: Build and run Docker containers
+        run: |
+          docker-compose up --build -d
 
       - name: Run Integration Test
-        run: npm run test:e2e
+        run: |
+          docker-compose run api npm run test:e2e
+
+      - name: Stop Docker containers
+        run: |
+          docker-compose down
+
