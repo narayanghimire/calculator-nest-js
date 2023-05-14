@@ -37,11 +37,11 @@ jobs:
 
       - name: Create dist folder
         run: |
-          docker-compose exec -T api npm build
+          docker-compose run api npm run build
 
       - name: Run Unit Test
         run: |
-          docker-compose exec -T api npm run test
+          docker-compose run api npm run test
 
       - name: Stop Docker containers
         run: |
