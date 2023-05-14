@@ -4,7 +4,7 @@ import { ExceptionResponse } from '../../Interface/exception.response';
 export class CalculationExceptionResponse implements ExceptionResponse {
   error = true;
   message: string;
-  constructor(message = 'invalid x-client header') {
+  constructor(message) {
     this.message = message;
   }
 

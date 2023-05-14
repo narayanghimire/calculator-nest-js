@@ -1,8 +1,11 @@
 ## This workflow is not required on this project but I want to show how actually I work when I am working
 
-name: PullRequest-QA-Workflow
+name: Test-Deploy-Main-Workflow
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -22,17 +25,5 @@ jobs:
       - name: create dist folder
         run: npm run build
 
-      - name: Run Unit Test
-        run: npm run test
-
-      - name: 'Publish Integration Test Results'
-        uses: EnricoMi/publish-unit-test-result-action@v1.31
-        if: always()
-        with:
-          files: reports/report_integration.xml
-          check_name: "Integration Test Results"
-        continue-on-error: false
-
-
-
-
+      - name: Run Integration Test
+        run: npm run test:e2e

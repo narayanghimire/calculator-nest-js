@@ -3,7 +3,9 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CalculationResponse {
-  buildCalculationResultResponse(calculationResult: CalculationResult) {
+  buildCalculationResultResponse(
+    calculationResult: CalculationResult,
+  ): CalculationResult {
     return calculationResult;
   }
 }

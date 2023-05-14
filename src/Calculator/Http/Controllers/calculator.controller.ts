@@ -5,6 +5,7 @@ import { CalculationResponse } from '../Responses/calculation.response';
 import { Query } from '@nestjs/common';
 import { CalculationRequest } from '../Requests/calculation.request';
 import { CalculationHistoryDto } from '../../Entities/calculation.history.dto';
+import { CalculationResult } from '../../Entities/calculation.result';
 
 @Controller()
 export class CalculatorController {
@@ -15,7 +16,9 @@ export class CalculatorController {
   ) {}
 
   @Get('calculus')
-  async calculate(@Query() calculationRequest: CalculationRequest) {
+  async calculate(
+    @Query() calculationRequest: CalculationRequest,
+  ): Promise<CalculationResult> {
     const query = calculationRequest.query;
     const decryptedString = this.decryptService.decrypt(query);
 
