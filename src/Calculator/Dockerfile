@@ -9,16 +9,12 @@ RUN npm install
 
 RUN npm install -g @nestjs/cli
 
-RUN mkdir logs && chown -R node:node logs
+RUN mkdir logs && chown -R node:node /app
 
 USER node
 
 COPY . .
 
-USER root
-RUN mkdir dist && chown -R node:node dist
-
-USER node
 RUN npm run build
 
 # Base image for production
@@ -30,7 +26,7 @@ COPY package*.json ./
 
 RUN npm install --only=production
 
-RUN mkdir logs && chown -R node:node logs
+RUN mkdir logs && chown -R node:node /app
 
 USER node
 
