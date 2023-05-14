@@ -17,7 +17,7 @@ jobs:
           docker-compose up --build -d
           
       - name: Debug session
-        run: docker-compose run --entrypoint /bin/bash api
+        run: docker-compose run --entrypoint /bin/sh api
 
       - name: Run Integration Test
         run: |
