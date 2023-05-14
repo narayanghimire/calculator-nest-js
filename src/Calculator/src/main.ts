@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { exceptionHandler } from './Calculator/Exception/exception-handler';
+import { exceptionHandler } from './Exception/exception-handler';
 import { ArgumentsHost } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';

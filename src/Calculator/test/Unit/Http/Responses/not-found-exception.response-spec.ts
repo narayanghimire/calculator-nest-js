@@ -1,11 +1,11 @@
 import { HttpStatus } from '@nestjs/common';
-import { ClientIdentifierExceptionResponse } from '../../../../../src/Calculator/Http/Responses/client-identifier-exception.response';
+import { NotFoundExceptionResponse } from '../../../../src/Http/Responses/not-found-exception.response';
 
-describe('ClientIdentifierExceptionResponse', () => {
-  let response: ClientIdentifierExceptionResponse;
+describe('NotFoundExceptionResponse', () => {
+  let response: NotFoundExceptionResponse;
 
   beforeEach(() => {
-    response = new ClientIdentifierExceptionResponse();
+    response = new NotFoundExceptionResponse();
   });
 
   it('should have error set to true', () => {
@@ -13,7 +13,7 @@ describe('ClientIdentifierExceptionResponse', () => {
   });
 
   it('should have a default message', () => {
-    expect(response.message).toBe('invalid x-client header');
+    expect(response.message).toBe('not found');
   });
 
   it('should have a statusCode of HttpStatus.NOT_FOUND', () => {
@@ -22,7 +22,7 @@ describe('ClientIdentifierExceptionResponse', () => {
 
   it('should accept a custom message', () => {
     const customMessage = 'Custom error message';
-    const responseWithCustomMessage = new ClientIdentifierExceptionResponse(
+    const responseWithCustomMessage = new NotFoundExceptionResponse(
       customMessage,
     );
     expect(responseWithCustomMessage.message).toBe(customMessage);

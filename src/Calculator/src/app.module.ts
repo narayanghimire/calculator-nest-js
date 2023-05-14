@@ -1,4 +1,4 @@
-import { CalculatorModule } from './Calculator/calculator.module';
+import { CalculatorModule } from './calculator.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   MiddlewareConsumer,
@@ -6,7 +6,7 @@ import {
   NestModule,
   RequestMethod,
 } from '@nestjs/common';
-import { ClientMiddleware } from './Calculator/Http/Middlewares/client.middleware';
+import { ClientMiddleware } from './Http/Middlewares/client.middleware';
 
 @Module({
   imports: [

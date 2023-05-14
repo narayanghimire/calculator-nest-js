@@ -1,13 +1,13 @@
-import { exceptionHandler } from '../../../../src/Calculator/Exception/exception-handler';
-import { logger } from '../../../../src/Calculator/Config/logger';
-import { CalculationException } from '../../../../src/Calculator/Exception/calculation.exception';
-import { ClientIdentifierException } from '../../../../src/Calculator/Exception/client.identifier.exception';
-import { CalculationExceptionResponse } from '../../../../src/Calculator/Http/Responses/calculation.exception.response';
+import { exceptionHandler } from '../../../src/Exception/exception-handler';
+import { logger } from '../../../src/Config/logger';
+import { CalculationException } from '../../../src/Exception/calculation.exception';
+import { ClientIdentifierException } from '../../../src/Exception/client.identifier.exception';
+import { CalculationExceptionResponse } from '../../../src/Http/Responses/calculation.exception.response';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import { NotFoundExceptionResponse } from '../../../../src/Calculator/Http/Responses/not-found-exception.response';
-import { DefaultExceptionResponse } from '../../../../src/Calculator/Http/Responses/defualt-exception.response';
-import { BadRequestExceptionResponse } from '../../../../src/Calculator/Http/Responses/bad-request.exception.response';
-import { ClientIdentifierExceptionResponse } from '../../../../src/Calculator/Http/Responses/client-identifier-exception.response';
+import { NotFoundExceptionResponse } from '../../../src/Http/Responses/not-found-exception.response';
+import { DefaultExceptionResponse } from '../../../src/Http/Responses/defualt-exception.response';
+import { BadRequestExceptionResponse } from '../../../src/Http/Responses/bad-request.exception.response';
+import { ClientIdentifierExceptionResponse } from '../../../src/Http/Responses/client-identifier-exception.response';
 
 jest.mock('../Config/logger', () => ({
   logger: {

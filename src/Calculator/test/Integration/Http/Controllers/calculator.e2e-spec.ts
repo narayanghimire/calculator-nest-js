@@ -1,8 +1,8 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppModule } from '../../../../../src/app.module';
+import { AppModule } from '../../../../src/app.module';
 import * as supertest from 'supertest';
-import { VALID_CLIENT } from '../../../../../src/Calculator/Constants/constants';
+import { VALID_CLIENT } from '../../../../src/Constants/constants';
 describe('CalculatorService (e2e)', () => {
   let app: INestApplication;
   let agent: supertest.SuperTest<supertest.Test>;

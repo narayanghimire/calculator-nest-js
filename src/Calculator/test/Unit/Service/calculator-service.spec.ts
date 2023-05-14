@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CalculatorService } from '../../../../src/Calculator/Services/calculator.service';
-import { CalculationException } from '../../../../src/Calculator/Exception/calculation.exception';
+import { CalculatorService } from '../../../src/Services/calculator.service';
+import { CalculationException } from '../../../src/Exception/calculation.exception';
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
   CALCULATION_REPOSITORY_TOKEN,
-} from '../../../../src/Calculator/Constants/constants';
+} from '../../../src/Constants/constants';
 
 describe('CalculatorService', () => {
   let service: CalculatorService;

@@ -29,14 +29,7 @@ jobs:
 
       - name: Build and run Docker containers
         run: |
-          docker-compose up --build -d
-
-      - name: Install dependencies with Docker Compose
-        run: docker-compose exec api npm install
-
-      - name: Create dist folder
-        run: |
-          docker-compose run api npm run build
+           docker-compose up --build -d
 
       - name: Run Unit Test
         run: |

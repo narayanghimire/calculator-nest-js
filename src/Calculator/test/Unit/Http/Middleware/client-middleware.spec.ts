@@ -1,6 +1,6 @@
-import { ClientMiddleware } from '../../../../../src/Calculator/Http/Middlewares/client.middleware';
-import { ClientIdentifierException } from '../../../../../src/Calculator/Exception/client.identifier.exception';
-import { VALID_CLIENT } from '../../../../../src/Calculator/Constants/constants';
+import { ClientMiddleware } from '../../../../src/Http/Middlewares/client.middleware';
+import { ClientIdentifierException } from '../../../../src/Exception/client.identifier.exception';
+import { VALID_CLIENT } from '../../../../src/Constants/constants';
 
 describe('ClientMiddleware', () => {
   let middleware: ClientMiddleware;

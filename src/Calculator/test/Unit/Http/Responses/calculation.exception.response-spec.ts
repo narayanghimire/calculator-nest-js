@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { CalculationExceptionResponse } from '../../../../../src/Calculator/Http/Responses/calculation.exception.response';
+import { CalculationExceptionResponse } from '../../../../src/Http/Responses/calculation.exception.response';
 
 describe('CalculationExceptionResponse', () => {
   let response: CalculationExceptionResponse;

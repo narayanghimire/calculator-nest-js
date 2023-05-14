@@ -16,13 +16,6 @@ jobs:
         run: |
           docker-compose up --build -d
 
-      - name: Install dependencies with Docker Compose
-        run: docker-compose exec -T api npm install
-
-      - name: Create dist folder
-        run: |
-          docker-compose run api npm run build
-
       - name: Run Integration Test
         run: |
           docker-compose run api npm run test:e2e

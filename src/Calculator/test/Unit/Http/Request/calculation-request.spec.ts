@@ -1,4 +1,4 @@
-import { CalculationRequest } from '../../../../../src/Calculator/Http/Requests/calculation.request';
+import { CalculationRequest } from '../../../../src/Http/Requests/calculation.request';
 
 describe('CalculationRequest', () => {
   it('should create a valid CalculationRequest object', () => {
