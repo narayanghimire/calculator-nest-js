@@ -7,19 +7,18 @@ COPY package*.json ./
 
 RUN npm install
 
-# Install Nest CLI globally
 RUN npm install -g @nestjs/cli
 
-# Create logs directory and change its owner
 RUN mkdir logs && chown -R node:node logs
 
-# Switch to `node` user
 USER node
 
-# Bundle app source
 COPY . .
 
-# Creates a "dist" folder with the development build
+USER root
+RUN mkdir dist && chown -R node:node dist
+
+USER node
 RUN npm run build
 
 # Base image for production
@@ -29,16 +28,12 @@ WORKDIR /app
 
 COPY package*.json ./
 
-# Install app dependencies
 RUN npm install --only=production
 
-# Create logs directory and change its owner
 RUN mkdir logs && chown -R node:node logs
 
-# Switch to `node` user
 USER node
 
-# Copy from development stage
 COPY --from=development /app/dist ./dist
 
 CMD ["node", "dist/main.js"]
