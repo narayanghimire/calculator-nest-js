@@ -8,7 +8,6 @@ describe('CalculatorService (e2e)', () => {
   let agent: supertest.SuperTest<supertest.Test>;
 
   beforeAll(async () => {
-    jest.setTimeout(10000);
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();

@@ -4,11 +4,10 @@ import { CalculationResult } from '../Entities/calculation.result';
 import { CalculationException } from '../Exception/calculation.exception';
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
-  CALCULATION_REPOSITORY_TOKEN, LOGGER_TOKEN,
+  CALCULATION_REPOSITORY_TOKEN,
 } from '../Constants/constants';
 import { ICalculationPersistenceRespository } from '../Interface/calculation.persistence.respository';
 import { CalculationHistoryDto } from '../Entities/calculation.history.dto';
-import { ILogger } from '../Logger/logger.interface';
 
 @Injectable()
 export class CalculatorService {
@@ -16,16 +15,13 @@ export class CalculatorService {
     @Inject(CALCULATION_REPOSITORY_TOKEN)
     private readonly calculationRepository: ICalculationRepository,
     @Inject(CALCULATION_REPOSITORY_PERSIST_TOKEN)
-    private readonly persist: ICalculationPersistenceRespository,
-    @Inject(LOGGER_TOKEN)
-    private logger: ILogger,
+    private readonly persist: ICalculationPersistenceRespository
   ) {}
   async calculate(query: string): Promise<CalculationResult> {
     try {
       const result = this.calculationRepository.calculate(query);
       return new CalculationResult(false, result);
     } catch (error) {
-      this.logger.error(error);
       CalculationException.throwCalculationException();
     }
   }
@@ -34,7 +30,6 @@ export class CalculatorService {
     try {
       await this.persist.saveCalculation(query, result);
     } catch (error) {
-      this.logger.error(error);
       CalculationException.throwCannotSaveCalculatedValueException();
     }
   }
@@ -43,7 +38,6 @@ export class CalculatorService {
     try {
       return await this.persist.getLastFiveCalculationsHistory();
     } catch (error) {
-      this.logger.error(error);
       CalculationException.throwCalculationHistoryException();
     }
   }

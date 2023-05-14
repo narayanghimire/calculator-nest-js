@@ -11,16 +11,9 @@ import { DefaultExceptionResponse } from '../../../src/Http/Responses/defualt-ex
 import { BadRequestExceptionResponse } from '../../../src/Http/Responses/bad-request.exception.response';
 describe('ExceptionHandler', () => {
   let exceptionHandler: ExceptionHandler;
-  let mockLogger;
 
   beforeEach(async () => {
-    mockLogger = { error: jest.fn() };
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        ExceptionHandler,
-        { provide: LOGGER_TOKEN, useValue: mockLogger },
-      ],
-    }).compile();
+    const module: TestingModule = await Test.createTestingModule({}).compile();
     exceptionHandler = module.get<ExceptionHandler>(ExceptionHandler);
   });
 
@@ -29,7 +22,6 @@ describe('ExceptionHandler', () => {
     const response = exceptionHandler.handleException(calculationException);
     expect(response).toBeInstanceOf(CalculationExceptionResponse);
     expect(response.message).toBe(calculationException.message);
-    expect(mockLogger.error).toHaveBeenCalledWith(calculationException.message);
   });
 
   it('should handle ClientIdentifierException', () => {
@@ -41,29 +33,23 @@ describe('ExceptionHandler', () => {
     );
     expect(response).toBeInstanceOf(ClientIdentifierExceptionResponse);
     expect(response.message).toBe(clientIdentifierException.message);
-    expect(mockLogger.error).toHaveBeenCalledWith(
-      clientIdentifierException.message,
-    );
   });
 
   it('should handle NotFoundException', () => {
     const notFoundException = new NotFoundException('Resource not found');
     const response = exceptionHandler.handleException(notFoundException);
     expect(response).toBeInstanceOf(NotFoundExceptionResponse);
-    expect(mockLogger.error).toHaveBeenCalledWith(notFoundException.message);
   });
 
   it('should handle BadRequestException', () => {
     const badRequestException = new BadRequestException('Bad request');
     const response = exceptionHandler.handleException(badRequestException);
     expect(response).toBeInstanceOf(BadRequestExceptionResponse);
-    expect(mockLogger.error).toHaveBeenCalledWith(badRequestException.message);
   });
 
   it('should handle other exceptions with DefaultExceptionResponse', () => {
     const error = new Error('Test error');
     const response = exceptionHandler.handleException(error);
     expect(response).toBeInstanceOf(DefaultExceptionResponse);
-    expect(mockLogger.error).toHaveBeenCalledWith(error.message);
   });
 });
