@@ -8,18 +8,18 @@ services:
     volumes:
       - mongodb_data_container:/data/db
 
-  api:
+  calculator:
     build:
       context: .
-      dockerfile: ./src/Calculator/Dockerfile
+      dockerfile: apps/calculator/Dockerfile
       target: development
     volumes:
-      - .:/app:rw
-      - /app/node_modules
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
-      - 8000:8000
-    command: npm run start:dev
-    container_name: api
+      - 8001:8001
+    command: npm run start:dev calculator
+    container_name: calculator
     depends_on:
       - mongodb
 

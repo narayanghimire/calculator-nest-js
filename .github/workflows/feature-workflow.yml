@@ -31,9 +31,9 @@ jobs:
         run: |
            docker-compose up --build -d
 
-      - name: Run Unit Test
+      - name: Run unit Test
         run: |
-          docker-compose run api npm run test
+          docker-compose run calculator npm run test
 
       - name: Stop Docker containers
         run: |
