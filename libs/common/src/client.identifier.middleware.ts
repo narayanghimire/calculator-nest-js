@@ -1,6 +1,6 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction } from 'express';
-import { ClientIdentifierException } from '@app/common/middlewares/client.identifier.exception';
+import { ClientIdentifierException } from '@app/common/client.identifier.exception';
 import { VALID_CLIENT } from './valid.client';
 
 @Injectable()

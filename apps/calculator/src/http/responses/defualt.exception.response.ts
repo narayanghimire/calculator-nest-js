@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { ExceptionResponseInterface } from '../../exception/exception.response.interface';
+import { ExceptionResponseInterface } from '@app/calculator/src/exception/exception.response.interface';
 
 export class DefaultExceptionResponse implements ExceptionResponseInterface {
   error = true;

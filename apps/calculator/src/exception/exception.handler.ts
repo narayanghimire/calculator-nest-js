@@ -1,14 +1,14 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { CalculationException } from './calculation.exception';
-import { DefaultExceptionResponse } from '../http/Responses/defualt.exception.response';
-import { NotFoundExceptionResponse } from '../http/Responses/not.found.exception.response';
-import { CalculationExceptionResponse } from '../http/Responses/calculation.exception.response';
-import { ClientIdentifierExceptionResponse } from '../http/Responses/client.identifier.exception.response';
-import { BadRequestExceptionResponse } from '../http/Responses/bad.request.exception.response';
+import { DefaultExceptionResponse } from '../http/responses/defualt.exception.response';
+import { NotFoundExceptionResponse } from '../http/responses/not.found.exception.response';
+import { CalculationExceptionResponse } from '../http/responses/calculation.exception.response';
+import { ClientIdentifierExceptionResponse } from '../http/responses/client.identifier.exception.response';
+import { BadRequestExceptionResponse } from '../http/responses/bad.request.exception.response';
 import { QueryException } from './query.exception';
-import { QueryExceptionResponse } from '../http/Responses/query.exception.response';
+import { QueryExceptionResponse } from '../http/responses/query.exception.response';
 import { ExceptionResponseInterface } from './exception.response.interface';
-import { ClientIdentifierException } from '@app/common';
+import { ClientIdentifierException } from '@app/common/client.identifier.exception';
 
 export class ExceptionHandler {
   handleException(exception: Error): ExceptionResponseInterface {

@@ -1,11 +1,8 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppModule } from '../../../../src/app.module';
 import * as supertest from 'supertest';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { VALID_CLIENT } = require('@app/common/middlewares/valid.client.js');
-
+import { VALID_CLIENT } from '@app/common/valid.client';
+import { AppModule } from '@app/calculator/src/app.module';
 
 describe('CalculatorService (e2e)', () => {
   let app: INestApplication;

@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { DefaultExceptionResponse } from '../../../../src/http/Responses/defualt.exception.response';
+import { DefaultExceptionResponse } from '@app/calculator/src/http/responses/defualt.exception.response';
 
 describe('DefaultExceptionResponse', () => {
   let response: DefaultExceptionResponse;

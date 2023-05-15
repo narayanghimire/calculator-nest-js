@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Request, Response, NextFunction } from 'express';
 import { mock, instance, when, verify, anything } from 'ts-mockito';
-import { QueryValidatorMiddleware } from '../../../../src/http/Middleware/query.validator.middleware';
-import { QueryValidationService } from '../../../../src/services/query.validation.service';
-import { DecrypterInterface } from '../../../../src/Decrypter/decrypter.interface';
-import {QUERY_DECRYPTER_INTERFACE} from "../../../../src/constants/constants";
+import { QueryValidatorMiddleware } from '@app/calculator/src/http/middleware/query.validator.middleware';
+import { DecrypterInterface } from '@app/calculator/src/decrypter/decrypter.interface';
+import { QueryValidationService } from '@app/calculator/src/services/query.validation.service';
+import { QUERY_DECRYPTER_INTERFACE } from '@app/calculator/src/constants/constants';
 
 class DecrypterInterfaceClass implements DecrypterInterface {
   decrypt(query: string): string {
