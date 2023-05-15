@@ -1,14 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LOGGER_TOKEN } from '../../../src/constants/constants';
 import { ExceptionHandler } from '../../../src/exception/exception-handler';
 import { CalculationExceptionResponse } from '../../../src/http/Responses/calculation.exception.response';
 import { CalculationException } from '../../../src/exception/calculation.exception';
-import { ClientIdentifierException } from '../../../src/exception/client.identifier.exception';
 import { ClientIdentifierExceptionResponse } from '../../../src/http/Responses/client-identifier-exception.response';
 import { NotFoundExceptionResponse } from '../../../src/http/Responses/not-found-exception.response';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { DefaultExceptionResponse } from '../../../src/http/Responses/defualt-exception.response';
 import { BadRequestExceptionResponse } from '../../../src/http/Responses/bad-request.exception.response';
+import { ClientIdentifierException } from '@app/common';
 describe('ExceptionHandler', () => {
   let exceptionHandler: ExceptionHandler;
 

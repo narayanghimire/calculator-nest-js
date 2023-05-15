@@ -9,7 +9,6 @@ import { CalculatorService } from './services/calculator.service';
 import { QueryCalculationRepository } from './repository/query.calculation.repository';
 import { DecryptService } from './services/decrypt.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Calculation, CalculationSchema } from './entities/calculation';
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
   CALCULATION_REPOSITORY_TOKEN,
@@ -20,11 +19,15 @@ import { ExceptionHandler } from './exception/exception-handler';
 import { DecrypterProvider } from './Decrypter/decrypter.provider';
 import { QueryValidationService } from './services/query.validation.service';
 import { QueryValidatorMiddleware } from './http/Middleware/query.validator.middleware';
+import {
+  CalculationSchema,
+  CalculationSchemaClass,
+} from './entities/calculation.schema';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: Calculation.name, schema: CalculationSchema },
+      { name: CalculationSchemaClass.name, schema: CalculationSchema },
     ]),
   ],
   controllers: [CalculatorController],

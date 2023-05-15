@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema({ timestamps: true })
-export class Calculation extends Document {
+export class CalculationSchemaClass extends Document {
   @Prop({ required: true })
   query: string;
 
@@ -10,4 +10,6 @@ export class Calculation extends Document {
   result: number;
 }
 
-export const CalculationSchema = SchemaFactory.createForClass(Calculation);
+export const CalculationSchema = SchemaFactory.createForClass(
+  CalculationSchemaClass,
+);
