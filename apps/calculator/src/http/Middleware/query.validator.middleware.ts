@@ -12,9 +12,9 @@ export class QueryValidatorMiddleware implements NestMiddleware {
     @Inject(QUERY_DECRYPTER_INTERFACE)
     private readonly decrypter: DecrypterInterface,
   ) {}
-  use(req: Request, res: Response, next: NextFunction) {
+  use(req: Request, res: Response, next: NextFunction): void {
     const query = req.query.query as string;
-    if (this.queryValidationService.isBase64EncodedString(query)) {
+    if (!this.queryValidationService.isBase64EncodedString(query)) {
       throw QueryException.throwIsNotBase64IncodedString();
     }
     try {

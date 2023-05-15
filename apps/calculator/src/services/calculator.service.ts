@@ -26,7 +26,7 @@ export class CalculatorService {
     }
   }
 
-  async persistCalculation(query: string, result: number) {
+  async persistCalculation(query: string, result: number): Promise<void> {
     try {
       await this.persist.saveCalculation(query, result);
     } catch (error) {
