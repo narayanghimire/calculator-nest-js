@@ -27,7 +27,7 @@ describe('CalculatorService', () => {
         {
           provide: CALCULATION_REPOSITORY_PERSIST_TOKEN,
           useValue: mockPersistenceRepo,
-        }
+        },
       ],
     }).compile();
 
@@ -39,8 +39,8 @@ describe('CalculatorService', () => {
       const query = '2+2';
       mockCalculationRepo.calculate.mockReturnValue(4);
       const result = await service.calculate(query);
-      expect(result.getError()).toBe(false);
-      expect(result.getResult()).toBe(4);
+      expect(result.error).toBe(false);
+      expect(result.result).toBe(4);
     });
 
     it('should throw a CalculationException if calculation fails', async () => {
