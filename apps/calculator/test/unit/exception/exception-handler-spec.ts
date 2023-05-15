@@ -1,13 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExceptionHandler } from '../../../src/exception/exception.handler';
-import { CalculationExceptionResponse } from '../../../src/http/Responses/calculation.exception.response';
-import { CalculationException } from '../../../src/exception/calculation.exception';
-import { ClientIdentifierExceptionResponse } from '../../../src/http/Responses/client.identifier.exception.response';
-import { NotFoundExceptionResponse } from '../../../src/http/Responses/not.found.exception.response';
+import { ExceptionHandler } from '@app/calculator/src/exception/exception.handler';
+import { CalculationExceptionResponse } from '@app/calculator/src/http/responses/calculation.exception.response';
+import { ClientIdentifierException } from '@app/common/client.identifier.exception';
+import { ClientIdentifierExceptionResponse } from '@app/calculator/src/http/responses/client.identifier.exception.response';
+import { NotFoundExceptionResponse } from '@app/calculator/src/http/responses/not.found.exception.response';
+import { BadRequestExceptionResponse } from '@app/calculator/src/http/responses/bad.request.exception.response';
+import { DefaultExceptionResponse } from '@app/calculator/src/http/responses/defualt.exception.response';
+import { CalculationException } from '@app/calculator/src/exception/calculation.exception';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import { DefaultExceptionResponse } from '../../../src/http/Responses/defualt.exception.response';
-import { BadRequestExceptionResponse } from '../../../src/http/Responses/bad.request.exception.response';
-import { ClientIdentifierException } from '@app/common';
+
 describe('ExceptionHandler', () => {
   let exceptionHandler: ExceptionHandler;
 

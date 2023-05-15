@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ICalculationRepository } from '../repository/calculation.repository.interface';
-import { CalculationResult } from '../entities/calculation.result';
-import { CalculationException } from '../exception/calculation.exception';
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
   CALCULATION_REPOSITORY_TOKEN,
 } from '../constants/constants';
-import { CalculationHistoryDto } from '../entities/calculation.history.dto';
-import { ICalculationPersistenceRespository } from '../repository/calculation.persistence.respository.interface';
+import { ICalculationRepository } from '@app/calculator/src/repository/calculation.repository.interface';
+import { ICalculationPersistenceRespository } from '@app/calculator/src/repository/calculation.persistence.respository.interface';
+import { CalculationResult } from '@app/calculator/src/entities/calculation.result';
+import { CalculationException } from '@app/calculator/src/exception/calculation.exception';
+import { CalculationHistoryDto } from '@app/calculator/src/entities/calculation.history.dto';
 
 @Injectable()
 export class CalculatorService {

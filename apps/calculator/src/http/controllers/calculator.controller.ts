@@ -1,10 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
-import { CalculatorService } from '../../services/calculator.service';
-import { DecryptService } from '../../services/decrypt.service';
 import { Query } from '@nestjs/common';
-import { CalculationRequest } from '../Requests/calculation.request';
-import { CalculationHistoryDto } from '../../entities/calculation.history.dto';
-import { CalculationResult } from '../../entities/calculation.result';
+import { CalculatorService } from '@app/calculator/src/services/calculator.service';
+import { DecryptService } from '@app/calculator/src/services/decrypt.service';
+import { CalculationRequest } from '@app/calculator/src/http/requests/calculation.request';
+import { CalculationHistoryDto } from '@app/calculator/src/entities/calculation.history.dto';
+import { CalculationResult } from '@app/calculator/src/entities/calculation.result';
 
 @Controller()
 export class CalculatorController {

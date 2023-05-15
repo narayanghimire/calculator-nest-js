@@ -1,4 +1,4 @@
-import { CalculationException } from '../../../src/exception/calculation.exception';
+import { CalculationException } from '@app/calculator/src/exception/calculation.exception';
 
 describe('CalculationException', () => {
   it('should throw CalculationException', () => {

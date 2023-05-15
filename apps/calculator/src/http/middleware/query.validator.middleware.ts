@@ -1,9 +1,9 @@
 import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { QueryException } from '../../exception/query.exception';
-import { QueryValidationService } from '../../services/query.validation.service';
-import { DecrypterInterface } from '../../Decrypter/decrypter.interface';
-import { QUERY_DECRYPTER_INTERFACE } from '../../constants/constants';
+import { QueryValidationService } from '@app/calculator/src/services/query.validation.service';
+import { QUERY_DECRYPTER_INTERFACE } from '@app/calculator/src/constants/constants';
+import { DecrypterInterface } from '@app/calculator/src/decrypter/decrypter.interface';
+import { QueryException } from '@app/calculator/src/exception/query.exception';
 
 @Injectable()
 export class QueryValidatorMiddleware implements NestMiddleware {

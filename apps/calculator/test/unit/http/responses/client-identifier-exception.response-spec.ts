@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { ClientIdentifierExceptionResponse } from '../../../../src/http/Responses/client.identifier.exception.response';
+import { ClientIdentifierExceptionResponse } from '@app/calculator/src/http/responses/client.identifier.exception.response';
 
 describe('ClientIdentifierExceptionResponse', () => {
   let response: ClientIdentifierExceptionResponse;

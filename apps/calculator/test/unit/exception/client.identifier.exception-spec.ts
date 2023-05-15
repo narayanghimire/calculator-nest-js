@@ -1,4 +1,4 @@
-import { ClientIdentifierException } from '../../../src/exception/client.identifier.exception';
+import { ClientIdentifierException } from '@app/common/client.identifier.exception';
 
 describe('ClientIdentifierException', () => {
   it('should throw  noHeaderFound', () => {

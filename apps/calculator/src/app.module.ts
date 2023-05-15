@@ -1,7 +1,7 @@
 import { CalculatorModule } from './calculator.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
-import { ClientIdentifierModule } from '@app/common/middlewares/client.identifier.module';
+import { ClientIdentifierModule } from '@app/common/client.identifier.module';
 
 @Module({
   imports: [

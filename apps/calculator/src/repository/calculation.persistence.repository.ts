@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { plainToInstance } from 'class-transformer';
-import { CalculationHistoryDto } from '../entities/calculation.history.dto';
-import { ICalculationPersistenceRespository } from './calculation.persistence.respository.interface';
-import { CalculationSchemaClass } from '../entities/calculation.schema';
+import { CalculationSchemaClass } from '@app/calculator/src/entities/calculation.schema';
+import { CalculationHistoryDto } from '@app/calculator/src/entities/calculation.history.dto';
+import { ICalculationPersistenceRespository } from '@app/calculator/src/repository/calculation.persistence.respository.interface';
 
 @Injectable()
 export class CalculationPersistenceRepository

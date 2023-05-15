@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { NotFoundExceptionResponse } from '../../../../src/http/Responses/not.found.exception.response';
+import { NotFoundExceptionResponse } from '@app/calculator/src/http/responses/not.found.exception.response';
 
 describe('NotFoundExceptionResponse', () => {
   let response: NotFoundExceptionResponse;

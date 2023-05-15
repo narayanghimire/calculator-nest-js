@@ -1,7 +1,6 @@
-import { DecryptService } from '../../../src/services/decrypt.service';
-import { DecrypterInterface } from '../../../src/Decrypter/decrypter.interface';
+import { DecryptService } from '@app/calculator/src/services/decrypt.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { QUERY_DECRYPTER_INTERFACE } from '../../../src/constants/constants';
+import { QUERY_DECRYPTER_INTERFACE } from '@app/calculator/src/constants/constants';
 
 describe('DecryptService', () => {
   let service: DecryptService;

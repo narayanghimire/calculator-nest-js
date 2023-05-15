@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DecrypterInterface } from '../Decrypter/decrypter.interface';
-import { QUERY_DECRYPTER_INTERFACE } from '../constants/constants';
+import { QUERY_DECRYPTER_INTERFACE } from '@app/calculator/src/constants/constants';
+import { DecrypterInterface } from '@app/calculator/src/decrypter/decrypter.interface';
 
 @Injectable()
 export class DecryptService {

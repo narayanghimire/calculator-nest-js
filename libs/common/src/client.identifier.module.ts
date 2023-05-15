@@ -1,4 +1,4 @@
-import { ClientIdentifierMiddleware } from '@app/testcommon/index';
+import { ClientIdentifierMiddleware } from '@app/common/index';
 import {
   MiddlewareConsumer,
   Module,

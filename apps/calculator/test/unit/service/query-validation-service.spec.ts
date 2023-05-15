@@ -1,4 +1,4 @@
-import { QueryValidationService } from '../../../src/services/query.validation.service';
+import { QueryValidationService } from '@app/calculator/src/services/query.validation.service';
 
 describe('QueryValidationService', () => {
   let service: QueryValidationService;
