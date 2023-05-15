@@ -1,5 +1,4 @@
 import { ClientIdentifierMiddleware } from '@app/common';
-import { ClientIdentifierException } from '@app/common/middlewares/client.identifier.exception';
 import {
   MiddlewareConsumer,
   Module,

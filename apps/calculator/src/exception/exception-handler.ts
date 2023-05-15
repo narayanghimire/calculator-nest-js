@@ -5,10 +5,10 @@ import { NotFoundExceptionResponse } from '../http/Responses/not-found-exception
 import { CalculationExceptionResponse } from '../http/Responses/calculation.exception.response';
 import { ClientIdentifierExceptionResponse } from '../http/Responses/client-identifier-exception.response';
 import { BadRequestExceptionResponse } from '../http/Responses/bad-request.exception.response';
-import { ClientIdentifierException } from '@app/common/middlewares/client.identifier.exception';
 import { QueryException } from './query.exception';
 import { QueryExceptionResponse } from '../http/Responses/query.exception.response';
 import { ExceptionResponseInterface } from './exception.response.interface';
+import { ClientIdentifierException } from '@app/common';
 
 export class ExceptionHandler {
   handleException(exception: Error): ExceptionResponseInterface {

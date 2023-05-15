@@ -7,7 +7,6 @@ import {
 import { CalculatorController } from './http/Controllers/calculator.controller';
 import { CalculatorService } from './services/calculator.service';
 import { QueryCalculationRepository } from './repository/query.calculation.repository';
-import { CalculationResponse } from './http/Responses/calculation.response';
 import { DecryptService } from './services/decrypt.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Calculation, CalculationSchema } from './entities/calculation';
@@ -44,7 +43,6 @@ import { QueryValidatorMiddleware } from './http/Middleware/query.validator.midd
     },
     CalculatorService,
     DecryptService,
-    CalculationResponse,
     ExceptionHandler,
     QueryValidationService,
   ],
