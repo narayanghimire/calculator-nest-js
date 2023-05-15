@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { BadRequestExceptionResponse } from '../../../../src/http/Responses/bad-request.exception.response';
+import { BadRequestExceptionResponse } from '../../../../src/http/Responses/bad.request.exception.response';
 
 describe('BadRequestExceptionResponse', () => {
   let response: BadRequestExceptionResponse;

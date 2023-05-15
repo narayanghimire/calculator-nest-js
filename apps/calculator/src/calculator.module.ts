@@ -15,7 +15,7 @@ import {
   QUERY_DECRYPTER_INTERFACE,
 } from './constants/constants';
 import { CalculationPersistenceRepository } from './repository/calculation.persistence.repository';
-import { ExceptionHandler } from './exception/exception-handler';
+import { ExceptionHandler } from './exception/exception.handler';
 import { DecrypterProvider } from './Decrypter/decrypter.provider';
 import { QueryValidationService } from './services/query.validation.service';
 import { QueryValidatorMiddleware } from './http/Middleware/query.validator.middleware';
