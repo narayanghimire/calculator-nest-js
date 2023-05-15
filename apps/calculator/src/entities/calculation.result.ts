@@ -7,7 +7,7 @@ export class CalculationResult {
   @IsNumber()
   readonly result: number;
 
-  constructor(error = false, result: number) {
+  constructor(result: number, error = false) {
     this.error = error;
     this.result = result;
   }
